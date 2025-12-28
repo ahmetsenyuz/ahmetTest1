@@ -7,6 +7,7 @@ namespace TodoApp.Pages
     public class IndexModel : PageModel
     {
         public List<string> Todos { get; set; } = new List<string>();
+        
         [BindProperty]
         public string NewTodo { get; set; } = string.Empty;
 
