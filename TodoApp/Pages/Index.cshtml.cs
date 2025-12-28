@@ -6,27 +6,29 @@ namespace TodoApp.Pages
 {
     public class IndexModel : PageModel
     {
-        public List<string> TodoItems { get; set; } = new List<string>();
+        public List<string> Todos { get; set; } = new List<string>();
+        [BindProperty]
+        public string NewTodo { get; set; } = string.Empty;
 
         public void OnGet()
         {
-            // Initialize or retrieve todo items from a data store
-            TodoItems = new List<string> { "Sample Task 1", "Sample Task 2" };
+            // Initialize or load todos from a database or session
+            Todos = new List<string> { "Sample Task 1", "Sample Task 2" };
         }
 
-        public IActionResult OnPost(string todoItem)
+        public IActionResult OnPost()
         {
-            if (!string.IsNullOrEmpty(todoItem))
+            if (!string.IsNullOrEmpty(NewTodo))
             {
-                TodoItems.Add(todoItem);
+                Todos.Add(NewTodo);
             }
-            return RedirectToPage();
+            return Page();
         }
 
-        public IActionResult OnPostDelete(string item)
+        public IActionResult OnPostDelete(string todoToDelete)
         {
-            TodoItems.Remove(item);
-            return RedirectToPage();
+            Todos.Remove(todoToDelete);
+            return Page();
         }
     }
 }
