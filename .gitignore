@@ -1,0 +1,28 @@
+# Ignore bin and obj folders
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore build output
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+
+# Ignore NuGet packages
+packages/
+
+# Ignore local settings
+appsettings.Development.json
+
+# Ignore IDE-specific files
+.idea/
+.vs/
+*.swp
+
+# Ignore test results
+TestResults/
