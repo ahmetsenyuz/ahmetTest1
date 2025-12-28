@@ -1,0 +1,71 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Todo List";
+}
+
+<div class="container">
+    <h1 class="text-center my-4">Todo List</h1>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" class="mb-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" asp-for="NewTodo" placeholder="Add a new task..." />
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+                    <ul class="list-group">
+                        @foreach (var todo in Model.Todos)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>@todo</span>
+                                <form method="post" class="d-inline">
+                                    <input type="hidden" name="todoToDelete" value="@todo" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+        margin-top: 50px;
+    }
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: none;
+    }
+    .card-body {
+        padding: 2rem;
+    }
+    .form-control {
+        border-radius: 0.25rem;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+    .list-group-item {
+        border: none;
+        border-bottom: 1px solid #eee;
+        padding: 1rem;
+    }
+    .list-group-item:last-child {
+        border-bottom: none;
+    }
+</style>
