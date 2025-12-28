@@ -1,0 +1,29 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Todo List";
+}
+
+<div class="container">
+    <h1>Todo List</h1>
+    <form method="post">
+        <div class="form-group">
+            <label for="todoItem">Add a new task:</label>
+            <input type="text" class="form-control" id="todoItem" name="todoItem" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+    <ul class="list-group mt-3">
+        @foreach (var item in Model.TodoItems)
+        {
+            <li class="list-group-item">
+                <div class="d-flex justify-content-between">
+                    <span>@item</span>
+                    <form method="post" action="?handler=Delete&item=@item">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
